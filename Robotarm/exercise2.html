@@ -1,68 +1,51 @@
 <html>
     <body>
-    <background-color: green;>
         <canvas id="canvas" width="800" height="600"></canvas>
-        <script src="./robot-arm.js"></script>
+        <script src="robot-arm.js"></script>
         <script>
-            // Robotarm bibliotheek inladen
+            // Initialize the robot arm
             var canvas = document.getElementById("canvas");
             var robotArm = new RobotArm(canvas);
 
-            // Het level inladen
-            robotArm.loadLevel("exercise 6");
-            robotArm.speed =2000;
+            // Either use loadLevel or randomLevel to create a start scene
+            robotArm.loadLevel("exercise 2");
+            robotArm.speed = 1000;
 
-            // Jou instructies volgen hier
-            robotArm.moveRight();
-            robotArm.moveRight();
-            robotArm.moveRight();
-            robotArm.moveRight();
-            robotArm.moveRight();
-            robotArm.moveRight();
-            robotArm.moveRight();
+            // My instructions come here
+
             robotArm.grab();
+            robotArm.moveRight();
+            robotArm.moveRight();
+            robotArm.moveRight();
+            robotArm.moveRight();
+            robotArm.moveRight();
+            robotArm.moveRight();
+            robotArm.moveRight();
+            robotArm.moveRight();
+            robotArm.moveRight();
+            robotArm.drop();
+            robotArm.moveLeft();
+            robotArm.moveLeft();
+            robotArm.moveLeft();
+            robotArm.moveLeft();
+            robotArm.moveLeft();
+            robotArm.grab();
+            robotArm.moveRight();
+            robotArm.moveRight();
+            robotArm.moveRight();
+            robotArm.moveRight();
             robotArm.moveRight();
             robotArm.drop();
             robotArm.moveLeft();
             robotArm.moveLeft();
             robotArm.grab();
             robotArm.moveRight();
-            robotArm.drop();
-            robotArm.moveLeft();
-            robotArm.moveLeft();
-            robotArm.grab();
-            robotArm.moveRight();
-            robotArm.drop();
-            robotArm.moveLeft();
-            robotArm.moveLeft();
-            robotArm.grab();
-            robotArm.moveRight();
-            robotArm.drop();
-            robotArm.moveLeft();
-            robotArm.moveLeft();
-            robotArm.grab();
-            robotArm.moveRight();
-            robotArm.drop();
-            robotArm.moveLeft();
-            robotArm.moveLeft();
-            robotArm.grab();
-            robotArm.moveRight();
-            robotArm.drop();
-            robotArm.moveLeft();
-            robotArm.moveLeft();
-            robotArm.grab();
-            robotArm.moveRight();
-            robotArm.drop();
-            robotArm.moveLeft();
-            robotArm.moveLeft();
-            robotArm.grab();
             robotArm.moveRight();
             robotArm.drop();
 
 
 
-
-            // De door jou opgegeven instructies uitvoeren
+            // Call run to run the animations
             robotArm.run();
         </script>
     </body>

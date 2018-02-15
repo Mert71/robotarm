@@ -323,15 +323,12 @@ var RobotArm = function (canvas) {
      * Grabs a block from beneath, if possible
      */
     self.grab = function () {
-
-        if (local.state.blocks.held == null) {
-            local.animationList.push(local.grabAnimation);
-            if (local.state.blocks.map[local.state.arm.position] && local.state.blocks.map[local.state.arm.position].length > 0) {
-                local.state.blocks.held = local.state.blocks.map[local.state.arm.position][local.state.blocks.map[local.state.arm.position].length - 1];
-                var row = local.state.blocks.map[local.state.arm.position];
-                var blocksInRow = row.length;
-                row.splice(blocksInRow - 1, 1);
-            }
+        local.animationList.push(local.grabAnimation);
+        if (local.state.blocks.map[local.state.arm.position] && local.state.blocks.map[local.state.arm.position].length > 0) {
+            local.state.blocks.held = local.state.blocks.map[local.state.arm.position][local.state.blocks.map[local.state.arm.position].length - 1];
+            var row = local.state.blocks.map[local.state.arm.position];
+            var blocksInRow = row.length;
+            row.splice(blocksInRow - 1, 1);
         }
     };
     /**
@@ -393,7 +390,7 @@ var RobotArm = function (canvas) {
                     ["blue"],
                     ["green", "green"],
                     ["white", "white", "white"],
-                    ["red", "red", "red", "red"],
+                    ["red", "red", "red", "red"]
                 ]);
                 break;
             case "exercise 10":
@@ -406,31 +403,22 @@ var RobotArm = function (canvas) {
                 ]);
                 break;
             case "exercise 11":
-                self.setMap([
-                    [],
-                    [local.blocks.availableColors[Math.floor(Math.random() * local.blocks.availableColors.length)]],
-                    [local.blocks.availableColors[Math.floor(Math.random() * local.blocks.availableColors.length)]],
-                    [local.blocks.availableColors[Math.floor(Math.random() * local.blocks.availableColors.length)]],
-                    [local.blocks.availableColors[Math.floor(Math.random() * local.blocks.availableColors.length)]],
-                    [local.blocks.availableColors[Math.floor(Math.random() * local.blocks.availableColors.length)]],
-                    [local.blocks.availableColors[Math.floor(Math.random() * local.blocks.availableColors.length)]],
-                    [local.blocks.availableColors[Math.floor(Math.random() * local.blocks.availableColors.length)]],
-                    [local.blocks.availableColors[Math.floor(Math.random() * local.blocks.availableColors.length)]],
-                    [local.blocks.availableColors[Math.floor(Math.random() * local.blocks.availableColors.length)]]
-                ]);
+              //  self.setMap([
+                    // [],
+                    // ["white"],
+                    // ["red"],
+                    // ["red"],
+                    // ["blue"],
+                    // ["red"],
+                    // ["green"],
+                    // ["blue"],
+                    // ["green"],
+                    // ["green"]
+        //        ]);
+        self.randomLevel(9,1);
                 break;
             case "exercise 12":
-                self.setMap([
-                    [local.blocks.availableColors[Math.floor(Math.random() * local.blocks.availableColors.length)]],
-                    [local.blocks.availableColors[Math.floor(Math.random() * local.blocks.availableColors.length)]],
-                    [local.blocks.availableColors[Math.floor(Math.random() * local.blocks.availableColors.length)]],
-                    [local.blocks.availableColors[Math.floor(Math.random() * local.blocks.availableColors.length)]],
-                    [local.blocks.availableColors[Math.floor(Math.random() * local.blocks.availableColors.length)]],
-                    [local.blocks.availableColors[Math.floor(Math.random() * local.blocks.availableColors.length)]],
-                    [local.blocks.availableColors[Math.floor(Math.random() * local.blocks.availableColors.length)]],
-                    [local.blocks.availableColors[Math.floor(Math.random() * local.blocks.availableColors.length)]],
-                    [local.blocks.availableColors[Math.floor(Math.random() * local.blocks.availableColors.length)]],
-                ]);
+                self.randomLevel(Math.random()*5+1,Math.random()*5+1);
                 break;
             case "exercise 13":
                 self.setMap([
@@ -474,14 +462,30 @@ var RobotArm = function (canvas) {
                     ["green"]
                 ]);
                 break;
+                // Amanda dit is het level met de roze blokken
+                case "exercise 16":
+                    self.setMap([
+                        ["#ff00dc", "#ff00dc", "#ff00dc", "#ff00dc"],
+                        ["#ff00dc", "#ff00dc", "#ff00dc", "#ff00dc"],
+                        ["#ff00dc", "#ff00dc", "#ff00dc"],
+                        ["white", "white", "white"],
+                        ["white", "white", "white"],
+                        ["white", "white", "white"],
+                        [],
+                        [],
+                        [],
+                        []
+                    ]);
+                    break;
+                // einde roze blokken opdracht
             default:
                 throw new Error("There is no level with the name: " + levelName);
         }
     };
 
-    self.randomLevel = function (columns) {
-		columns = columns || 5;
-		rows = 6;
+    self.randomLevel = function (columns, rows) {
+		columns = columns ? columns : self.columns;
+		rows = rows ? rows : self.rows;
 
 		var map = [];
 		for (var c = 0; c < columns; c++) {
